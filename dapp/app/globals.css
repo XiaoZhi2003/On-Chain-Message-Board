@@ -1,0 +1,88 @@
+/* dapp/app/globals.css */
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #9333ea;
+  --color-accent: #3b82f6;
+}
+
+@layer base {
+  body {
+    background: radial-gradient(circle at 50% 0%, #1e1b4b 0%, #000000 100%);
+    @apply antialiased text-white min-h-screen;
+  }
+}
+
+/* v4 规则：
+  1. @utility 名称只能是小写字母和数字。
+  2. 伪类样式（hover, focus）直接写在普通 CSS 声明里，或者在 JS 中使用 hover:glass-card。
+*/
+
+@utility glass-card {
+  position: relative;
+  overflow: hidden;
+  background-color: rgb(255 255 255 / 0.05);
+  backdrop-filter: blur(24px);
+  border: 1px solid rgb(255 255 255 / 0.1);
+  border-radius: 1.5rem;
+  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.5);
+  transition: all 0.5s;
+
+  /* 在 v4 中，如果你想在 utility 内定义 hover，直接用原生 CSS 语法 */
+  &:hover {
+    border-color: rgb(255 255 255 / 0.2);
+  }
+}
+
+@utility input-field {
+  width: 100%;
+  padding: 1rem;
+  background-color: rgb(255 255 255 / 0.05);
+  border: 1px solid rgb(255 255 255 / 0.1);
+  border-radius: 1rem;
+  color: white;
+  transition: all 0.3s;
+
+  &:focus {
+    background-color: rgb(255 255 255 / 0.1);
+    border-color: var(--color-primary);
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(147, 51, 234, 0.1);
+  }
+}
+
+@utility btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 2rem;
+  background: linear-gradient(to right, var(--color-primary), var(--color-accent));
+  color: white;
+  font-weight: 700;
+  border-radius: 1rem;
+  transition: all 0.3s;
+  cursor: pointer;
+  border: none;
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  &:hover {
+    filter: brightness(1.1);
+  }
+}
+
+/* 钱包按钮保持原样，因为它是覆盖第三方库的类，不使用 @utility */
+.wallet-adapter-button {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 1rem !important;
+  transition: all 0.3s !important;
+}
+
+.wallet-adapter-button:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(147, 51, 234, 0.5) !important;
+}
