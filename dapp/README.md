@@ -22,7 +22,7 @@
 
 ### 1. 克隆并安装依赖
 ```bash
-git clone https://github.com/XiaoZhi2003/On-chain-Message-Board
+git clone https://github.com/XiaoZhi2003/On-Chain-Message-Board
 npm install
 cd on-chain-message-board
 ```
